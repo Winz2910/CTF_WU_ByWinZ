@@ -27,8 +27,7 @@ Trông có vẻ khá giống với lổ hổng Prototype Pollution trong ngôn n
 ![image](https://github.com/Winz2910/DUCTF2024_WU/assets/117363798/815b9501-1739-4473-8be0-d3f34ff1a068)
 ![image](https://github.com/Winz2910/DUCTF2024_WU/assets/117363798/78f89053-9ce7-436d-aa83-ff6b52d5a12f)
 
-Ta cần thay đổi value của biến toàn cục `flag` thành `true` sau đấy truy cập đến end point `/get_flag` để lấy được cờ. Nhưng làm sao để can thiệp vào biến flag? Câu trả lời là lợi dùng hàm save_feedback() để đạt được điều đó. Python không tồn tại cái được gọi là Prototype nhưng chúng ta có "special attributes". Ví dụ như `__class__`, `__doc__`,...chúng là các thuộc tính đặc biệt trong mọi object trong Python. => ta cần tìm cách thay đổi value của biến toàn cục flag thành "true" thông qua việc truyền các thuộc tính đặc biệt vào hàm `save_feedback()`. Payload mà mình đã sử dụng:`{"__class__":{"__init__":{"__globals__":{"flag":"true"}}}}`
-Payload mình sử dụng sau khi đã nghiên cứu bài phân tích trên trang Abdulrah33m's Blog: https://blog.abdulrah33m.com/prototype-pollution-in-python/
+Ta cần thay đổi value của biến toàn cục `flag` thành `true` sau đấy truy cập đến end point `/get_flag` để lấy được cờ. Nhưng làm sao để can thiệp vào biến flag? Câu trả lời là lợi dùng hàm save_feedback() để đạt được điều đó. Python không tồn tại cái được gọi là Prototype nhưng chúng ta có "special attributes". Ví dụ như `__class__`, `__doc__`,...chúng là các thuộc tính đặc biệt trong mọi object trong Python. => ta cần tìm cách thay đổi value của biến toàn cục flag thành "true" thông qua việc truyền các thuộc tính đặc biệt vào hàm `save_feedback()`. Payload mà mình đã sử dụng:`{"__class__":{"__init__":{"__globals__":{"flag":"true"}}}}`. Payload mình sử dụng sau khi đã nghiên cứu bài phân tích trên trang Abdulrah33m's Blog: https://blog.abdulrah33m.com/prototype-pollution-in-python/
 
 ![image](https://github.com/Winz2910/DUCTF2024_WU/assets/117363798/d9be1469-4f2f-4135-88ea-6a06d8e707ce)
 
